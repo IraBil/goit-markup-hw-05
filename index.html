@@ -21,7 +21,7 @@
                 <a class="logo" href="./index.html">WEB<span class="black">STUDIO</span></a>
                 <ul class="navig-row">
                     <li class="navig-offset">
-                        <a class="navig" href="./index.html">Studio</a>
+                        <a class="navig linc-current" href="./index.html">Studio</a>
                     </li>
                     <li class="navig-offset">
                         <a class="navig" href="./portfolio.html">Portfolio</a>
@@ -50,7 +50,7 @@
     <main>
         <section class="section-order">
             <h1 class="title-h1">Effective Solutions<br> for Your Business</h1>
-            <button type="button" class="button-order">Order Service</button>
+            <button data-modal-open type="button" class="button-order" >Order Service</button>
         </section>
 
         <section>
@@ -399,6 +399,16 @@
         </div>
     </footer>
     
+    <div data-modal class="backdrop is-hidden">
+        <div class="modal">
+            <button data-modal-close class="close-modal">
+                <svg class="close-modal-icon" width="8" height="8">
+                    <use href="./images/icons.svg#icon-close-black"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <script src="./js/modal.js"></script>
 </body>
 
 </html>

@@ -43,6 +43,7 @@ img {
     --gray-icon: #AFB1B8;
     --gray-border-icon: #8E8F99;
     --green: #31D0AA;
+    --time_animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container {
@@ -100,10 +101,23 @@ img {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
+
+    transition: color var(--time_animation);
+}
+
+.linc-current:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--ocean);
+    position: absolute;
+    bottom: -25px;
 }
 
 .navig-offset {
     margin-right: 40px;
+    position: relative;
 }
 
 .navig-offset:last-child {
@@ -132,6 +146,8 @@ img {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+
+    transition: color var(--time_animation);
 }
 
 .contakts:hover,
@@ -181,6 +197,8 @@ img {
     cursor: pointer;
     border-radius: 4px;
     border: none;
+
+    transition: background-color var(--time_animation);
 }
 
 .button-order:hover,
@@ -354,6 +372,8 @@ img {
     border-radius: 50%;
     background-color: var(--iris);
     margin-right: 24px;
+
+    transition: background-color var(--time_animation);
 }
 
 .our-team-soc-net:hover,
@@ -388,6 +408,8 @@ img {
     width: 168px;
     padding: 16px 32px;
     margin-right: 24px;
+
+    transition: border var(--time_animation);
 }
 
 .customers-company:last-child {
@@ -407,6 +429,8 @@ img {
     fill: var(--gray-icon);
     height: 56px;
     width: 104px;
+
+    transition: fill var(--time_animation);
 }
 
 .footer {
@@ -457,6 +481,8 @@ img {
     border-radius: 50%;
     padding-top: 8px;
     margin-right: 16px;
+
+    transition: background-color var(--time_animation);
 }
 
 .footer-media-sigh:last-child {
@@ -475,8 +501,6 @@ img {
 .footer-media-icon:focus {
     background-color: var(--green);
 }
-
-
 
 .title {
     color: var(--basic-black);
@@ -502,7 +526,7 @@ img {
 
 .button {
     padding: 12px 24px; 
-    color: var(--blue); 
+    color: var(--iris); 
     background-color: var(--wight);  
     font-weight: 500;
     font-size: 16px;
@@ -511,6 +535,8 @@ img {
     cursor: pointer;
     border: 1px solid var(--wight-footer-text);
     border-radius: 4px;
+
+    transition: background-color var(--time_animation);
 }
 
 .offset {
@@ -524,7 +550,7 @@ img {
 .button:hover,
 .button:focus {
     color: var(--wight-button);    
-    background-color: var(--iris);
+    background-color: var(--ocean);
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
@@ -540,10 +566,10 @@ img {
 }
 
 .filter-cards {
+    /* position: relative; */
     margin-right: 24px;
     margin-bottom: 48px;
     width: 360px;
-    /* background: var(--wight-button); */
     border: 1px solid var(--wight-footer-text);
 }
 
@@ -553,7 +579,31 @@ img {
 
 .filter-cards:nth-child(3n) {
     margin-right: 0px;
-    /* background-color: orange; */
+}
+
+.overlay-animation {
+    position: relative;
+    overflow: hidden;    
+}
+
+.overlay {
+    position: absolute;
+    transform: translateY(100%);
+    background-color: var(--iris);
+    /* top: 0; */
+    height: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1,5;
+    letter-spacing: 0.02em;
+    color: var(--wight);
+    padding-left: 32px;
+    padding-right: 31px;
+    padding-top: 40px;
+
+    opacity: 0;
+    transition: transform var(--time_animation),
+                opacity var(--time_animation);
 }
 
 .filter-cards-text {
@@ -570,13 +620,80 @@ img {
 }
 
 .filter-cards:hover,
-.filter-cards:focus {
+.filter-cards:focus,
+.filter-cards:hover .overlay,
+.filter-cards:focus .overlay {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+    opacity: 1;
+    transform: translateY(0%);
+    top: 0;
 }
+
 .filter {
     margin-top: 8px;
     color: var(--gray);
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+}
+
+/* центрування {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+
+    width: 408px;
+    height: 576px;
+    background-color: var(--wight-footer-text);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.close-modal {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--wight-footer-text);
+    width: 24px;
+    height: 24px;
+    margin-left: 360px;
+    margin-top: 24px;
+
+    transition: background-color var(--time_animation);
+}
+
+.close-modal-icon {
+    fill: black;
+
+    transition: fill var(--time_animation);
+}
+
+.close-modal:hover,
+.close-modal:focus,
+.close-modal:hover svg,
+.close-modal:focus svg {
+    cursor: pointer;
+    background-color: var(--ocean) ;
+    border: none;
+    fill: var(--wight);
 }

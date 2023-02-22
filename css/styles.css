@@ -497,9 +497,7 @@ img {
 }
 
 .footer-media-sigh:hover,
-.footer-media-sigh:focus,
-.footer-media-icon:hover,
-.footer-media-icon:focus {
+.footer-media-sigh:focus {
     background-color: var(--green);
 }
 
@@ -680,21 +678,23 @@ img {
     margin-left: 360px;
     margin-top: 24px;
 
-    transition: background-color;
+    transition: background-color var(--time_animation);
 }
 
 .close-modal-icon {
     fill: black;
 
-    transition: fill;
+    transition: fill var(--time_animation);
 }
 
 .close-modal:hover,
-.close-modal:focus,
+.close-modal:focus {
+    cursor: pointer;
+    background-color: var(--ocean);
+    border: none;
+}
+
 .close-modal:hover svg,
 .close-modal:focus svg {
-    cursor: pointer;
-    background-color: var(--ocean) ;
-    border: none;
     fill: var(--wight);
 }

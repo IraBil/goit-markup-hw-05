@@ -40,6 +40,7 @@ img {
     --wight-button: #FFFFFF;
     --gray: #434455;
     --wight-footer-text: #E7E9FC;
+    --wight-modal: #FCFCFC;
     --gray-icon: #AFB1B8;
     --gray-border-icon: #8E8F99;
     --green: #31D0AA;
@@ -664,7 +665,7 @@ img {
 
     width: 408px;
     height: 576px;
-    background-color: var(--wight-footer-text);
+    background-color: var(--wight-modal);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
@@ -679,13 +680,13 @@ img {
     margin-left: 360px;
     margin-top: 24px;
 
-    transition: background-color var(--time_animation);
+    transition: background-color;
 }
 
 .close-modal-icon {
     fill: black;
 
-    transition: fill var(--time_animation);
+    transition: fill;
 }
 
 .close-modal:hover,
